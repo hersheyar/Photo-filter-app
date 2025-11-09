@@ -14,9 +14,15 @@ struct CameraPlusApp: App {
 
     var body: some Scene {
         WindowGroup {
-            CameraPlusView()
-                .environment(\.managedObjectContext,
-                             persistenceController.container.viewContext)
+            TabView {
+                CameraPlusView()
+                    .tabItem { Label("Camera", systemImage: "camera") }
+
+                GalleryView()
+                    .tabItem { Label("Gallery", systemImage: "photo.on.rectangle") }
+            }
+            .environment(\.managedObjectContext,
+                         persistenceController.container.viewContext)
         }
     }
 }
